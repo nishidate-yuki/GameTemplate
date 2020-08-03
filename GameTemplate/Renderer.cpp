@@ -1,7 +1,10 @@
+#include "Renderer.h"
+
 #include <iostream>
 #include <GL/glew.h>
 
-#include "Renderer.h"
+#include "WindowManager.h"
+#include "Scene.h"
 
 Renderer::Renderer()
 {
@@ -48,5 +51,5 @@ void Renderer::Draw()
 	// -----------------------------
 
 	// Swap
-	//windowManager->SwapWindow();
+	windowManager->SwapWindow();
 }

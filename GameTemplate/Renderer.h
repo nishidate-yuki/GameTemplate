@@ -1,11 +1,9 @@
 #pragma once
 #include <memory>
-#include <SDL2/SDL.h>
-
-#include "WindowManager.h"
-#include "Scene.h"
 
 class Game;
+class WindowManager;
+class Scene;
 
 class Renderer
 {

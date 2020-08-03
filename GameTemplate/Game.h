@@ -4,6 +4,7 @@
 
 class WindowManager;
 class Renderer;
+class Scene;
 
 class Game : public std::enable_shared_from_this<Game>
 {
@@ -21,8 +22,8 @@ private:
 	void Update();
 
 	std::shared_ptr<WindowManager> windowManager;
-	//std::shared_ptr<Renderer> renderer;
-	//std::shared_ptr<Scene> scene;
+	std::shared_ptr<Renderer> renderer;
+	std::shared_ptr<Scene> scene;
 	Uint32 ticksCount;
 	bool isRunning;
 };

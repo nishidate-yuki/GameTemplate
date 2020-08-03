@@ -10,7 +10,7 @@ WindowManager::WindowManager()
 WindowManager::~WindowManager()
 {
 	SDL_DestroyWindow(window);
-	//SDL_GL_DeleteContext(context);
+	SDL_GL_DeleteContext(context);
 	printf("WindowManager was deleted\n");
 }
 
@@ -47,20 +47,20 @@ bool WindowManager::Initialize(float screenWidth, float screenHeight)
 	}
 
 	// Create OpenGL context
-	//context = SDL_GL_CreateContext(window);
+	context = SDL_GL_CreateContext(window);
 
 	// Initialize GLEW
-	//glewExperimental = GL_TRUE;
-	//if (glewInit() != GLEW_OK) {
-	//	SDL_Log("Failed to initialize GLEW.");
-	//	return false;
-	//}
-	//glGetError(); // Clear error
+	glewExperimental = GL_TRUE;
+	if (glewInit() != GLEW_OK) {
+		SDL_Log("Failed to initialize GLEW.");
+		return false;
+	}
+	glGetError(); // Clear error
 
-	//// デプス値が現在値「以下」であればパスする(skyboxのためのトリック)
-	//glDepthFunc(GL_LEQUAL);
-	//// キューブマップをシームレスにする
-	//glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
+	// デプス値が現在値「以下」であればパスする(skyboxのためのトリック)
+	glDepthFunc(GL_LEQUAL);
+	// キューブマップをシームレスにする
+	glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
 
 	return true;
 }

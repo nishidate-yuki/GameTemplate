@@ -3,8 +3,8 @@
 #include <SDL2/SDL.h>
 
 #include "WindowManager.h"
-//#include "Scene.h"
-//#include "Renderer.h"
+#include "Renderer.h"
+#include "Scene.h"
 
 Game::Game()
 	: isRunning(true)
@@ -23,7 +23,8 @@ bool Game::Initialize()
 	}
 
 	windowManager = std::make_shared<WindowManager>();
-	//renderer = std::make_shared<Renderer>();
+	renderer = std::make_shared<Renderer>();
+	scene = std::make_shared<Scene>();
 
 	float screenWidth = 1024.0f;
 	float screenHeight = 768.0f;
@@ -31,8 +32,8 @@ bool Game::Initialize()
 	// Initialize vars
 	bool success = true;
 	success &= windowManager->Initialize(screenWidth, screenHeight);
-	//success &= renderer->Initialize(shared_from_this(), windowManager, scene);
-	//success &= scene->Initialize(screenWidth, screenHeight);
+	success &= renderer->Initialize(shared_from_this(), windowManager, scene);
+	success &= scene->Initialize(screenWidth, screenHeight);
 	if (!success) {
 		SDL_Log("Failed to initialize game");
 		return false;
@@ -48,7 +49,7 @@ void Game::RunLoop()
 	while (isRunning) {
 		ProcessInput();
 		Update();
-		//renderer->Draw();
+		renderer->Draw();
 	}
 }
 

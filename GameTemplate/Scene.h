@@ -16,7 +16,7 @@ public:
 	bool LoadContent();
 
 private:
-	std::shared_ptr<Game> game;
+	//std::shared_ptr<Game> game;
 
 	// Environment
 	//Sky sky;
