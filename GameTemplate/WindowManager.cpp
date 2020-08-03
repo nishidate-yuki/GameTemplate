@@ -1,7 +1,7 @@
 #include "WindowManager.h"
 
 #include <iostream>
-#include <SDL2/SDL.h>
+#include <GL/glew.h>
 
 WindowManager::WindowManager()
 {
@@ -50,21 +50,21 @@ bool WindowManager::Initialize(float screenWidth, float screenHeight)
 	//context = SDL_GL_CreateContext(window);
 
 	// Initialize GLEW
-	glewExperimental = GL_TRUE;
-	if (glewInit() != GLEW_OK) {
-		SDL_Log("Failed to initialize GLEW.");
-		return false;
-	}
-	glGetError(); // Clear error
+	//glewExperimental = GL_TRUE;
+	//if (glewInit() != GLEW_OK) {
+	//	SDL_Log("Failed to initialize GLEW.");
+	//	return false;
+	//}
+	//glGetError(); // Clear error
 
-	// デプス値が現在値「以下」であればパスする(skyboxのためのトリック)
-	glDepthFunc(GL_LEQUAL);
-	// キューブマップをシームレスにする
-	glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
+	//// デプス値が現在値「以下」であればパスする(skyboxのためのトリック)
+	//glDepthFunc(GL_LEQUAL);
+	//// キューブマップをシームレスにする
+	//glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
 
 	return true;
 }
 
-inline void WindowManager::SwapWindow() { SDL_GL_SwapWindow(window); }
+void WindowManager::SwapWindow() { SDL_GL_SwapWindow(window); }
 
-inline void WindowManager::ResetViewport() { glViewport(0, 0, screenWidth, screenHeight); }
+void WindowManager::ResetViewport() { glViewport(0, 0, screenWidth, screenHeight); }

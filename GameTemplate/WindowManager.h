@@ -1,6 +1,6 @@
 #pragma once
-#include <GL/glew.h>
-#include <SDL2/SDL_stdinc.h>
+#include <SDL2/SDL.h>
+//#include <SDL2/SDL_stdinc.h>
 
 class WindowManager
 {
@@ -16,8 +16,8 @@ public:
 	auto GetScreenHeight() const { return screenHeight; }
 
 private:
-	class SDL_Window* window;
-	//SDL_GLContext context;
+	SDL_Window* window;
+	SDL_GLContext context;
 	float screenWidth;
 	float screenHeight;
 };
